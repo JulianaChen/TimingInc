@@ -1,25 +1,29 @@
-/*******************************************************************************	
+/*******************************************************************************
 *	Project: 		Replication - Timing of Parental Income
 *	Created on:		Jul 15, 2019
-*	Last update: 	Jul 15, 2019
-*	Written by:		Juliana Chen 
-********************************************************************************			
+*	Last update: 	Jul 19, 2019
+*	Written by:		Juliana Chen
+********************************************************************************
 
-** PURPOSE: 	Uploads Data from the Family-Year Files from 1990 to 1997
-						
+** PURPOSE: 	Uploads Data from the Family-Year Files from 1990 to 2007 and 
+				obtains the treatment variable (i.e. parental income) as well as
+				covariates
+
 ** FLOW:		1. Set globals for variable names
-				2. Insheet data from text files downloaded from website
-				5. Label variables and rename them
-				6. Save processed files individually
-	
-** NOTES:		
-				
+				2. Insheet data from text files (downloaded from website)
+				3. Label variables and rename them
+				4. Save processed files individually
+
+** NOTES:		- Variable names and labels obtained from dictionary files
+
 *******************************************************************************/
 
 // Select Variables
 
-/* Notes: variable names for household (and parental income) variables obtained 
-from... */ 
+/* Variables:	- Treatment: paternal income (permanent and at each year)
+				- Covariates: paternal years of education, paternal age at birth,
+				paternal income growth (based on pre-birth and post-17 income),
+				maternal years of education, and maternal age at birth			*/ 
 
 global	varsall	"	intnum	state	famsize	hhinc	marstat	mempst	fempst	mearn	fearn	mrace	frace	mage	fage	medu	fedu	"
 global	vars90	" "
@@ -30,6 +34,13 @@ global	vars94	"	ER2002	ER4157	ER2006	ER4153	ER2014	ER2562	ER2068	ER3479	ER3139	E
 global	vars95	"	ER5002	ER6997	ER5005	ER6993	ER5013	ER5067	ER5561	ER6480	ER6139	ER6753	ER6814	ER5006	ER5008	ER6999	ER6998	"
 global	vars96	"	ER7002	ER9248	ER7005	ER9244	ER7013	ER7657	ER7163	ER8597	ER8256	ER8999	ER9060	ER7008	ER7006	ER9250	ER9249	"
 global	vars97	"	ER10002	ER10004	ER10008	ER12079	ER10016	ER10563	ER10081	ER11491	ER11150	ER11760	ER11848	ER10011	ER10009	ER12223	ER12222	"
+global	vars99	" "
+global	vars01	" "
+global	vars03	" "
+global	vars05	" "
+global	vars07	" "
+
+// Upload Raw Data
 
 #delimit ;
 
