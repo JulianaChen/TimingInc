@@ -1,13 +1,13 @@
 /*******************************************************************************
 *	Project: 		Replication - Timing of Parental Income
 *	Created on:		Jul 15, 2019
-*	Last update: 	Jul 19, 2019
+*	Last update: 	Jul 25, 2019
 *	Written by:		Juliana Chen
 ********************************************************************************
 
 ** PURPOSE: 	Uploads Data from the Family-Year Files from 1990 to 2007 and 
-				obtains the treatment variable (i.e. parental income) as well as
-				covariates
+				obtains treatment variable (i.e. parental income) as well as
+				household level covariates
 
 ** FLOW:		1. Set globals for variable names
 				2. Insheet data from text files (downloaded from website)
@@ -15,6 +15,8 @@
 				4. Save processed files individually
 
 ** NOTES:		- Variable names and labels obtained from dictionary files
+				- Link: https://simba.isr.umich.edu/Zips/ZipMain.aspx
+				- Data Downloaded on May 27, 2019 and July 17, 2019
 
 *******************************************************************************/
 
@@ -44,7 +46,7 @@ global	vars07	" "
 
 #delimit ;
 
-// Upload Family 1992
+* Upload Family 1992
 
 clear ;
 infix
@@ -64,7 +66,7 @@ infix
 	V21481       2159 - 2165
 	V21504       2239 - 2240
 	V21505       2241 - 2242
-using "$raw/FAM1992.txt", clear ;
+using "${raw}/FAM1992.txt", clear ;
 
 label variable  V20302     "1992 INTERVIEW NUMBER" ;                           
 label variable  V20303     "CURRENT STATE" ;
@@ -85,9 +87,9 @@ label variable  V21505     "COMPLETED ED-WF 92" ;
 
 rename ($vars92) ($varsall) ;
 ren * *_92 ;
-save "$pre\fam1992.dta", replace ;
+save "${pre}/fam1992.dta", replace ;
 
-// Upload Family 1993
+* Upload Family 1993
 
 clear ;
 infix
@@ -108,7 +110,7 @@ infix
 	V23324       3217 - 3223
 	V23333       3244 - 3245
 	V23334       3246 - 3247
-using "$raw/FAM1993.txt", clear ;
+using "${raw}/FAM1993.txt", clear ;
 
 label variable  V21602     "1993 INTERVIEW NUMBER" ;
 label variable  V21603     "CURRENT STATE" ;    
@@ -130,9 +132,9 @@ label variable  V23334     "COMPLETED ED-WF 1993" ;
 
 rename ($vars93) ($varsall) ;
 ren * *_93 ;
-save "$pre\fam1993.dta", replace ;
+save "${pre}/fam1993.dta", replace ;
 
-// Upload Family 1994
+* Upload Family 1994
 
 clear ;
 infix
@@ -153,7 +155,7 @@ infix
 	ER4157       4295 - 4296
 	ER4158       4305 - 4306
 	ER4159       4307 - 4308
-using "$raw/FAM1994ER.txt", clear ;
+using "${raw}/FAM1994ER.txt", clear ;
 
 label variable  ER2002       "1994 INTERVIEW #" ; 
 label variable  ER2006       "# IN FU" ;                                         
@@ -175,9 +177,9 @@ label variable  ER4159       "COMPLETED ED-WF" ;
 
 rename ($vars94) ($varsall) ;
 ren * *_94 ;
-save "$pre\fam1994.dta", replace ;
+save "${pre}/fam1994.dta", replace ;
 
-// Upload Family 1995
+* Upload Family 1995
 
 clear ;
 infix
@@ -197,7 +199,7 @@ infix
 	ER6997       4047 - 4048
 	ER6998       4057 - 4058
 	ER6999       4059 - 4060	
-using "$raw/FAM1995ER.txt", clear ;
+using "${raw}/FAM1995ER.txt", clear ;
 
 label variable  ER5002       "1995 INTERVIEW #" ; 
 label variable  ER5005       "# IN FU" ;
@@ -218,9 +220,9 @@ label variable  ER6999       "COMPLETED ED-WF" ;
 
 rename ($vars95) ($varsall) ;
 ren * *_95 ;
-save "$pre\fam1995.dta", replace ;
+save "${pre}/fam1995.dta", replace ;
 
-// Upload Family 1996
+* Upload Family 1996
 
 clear ;
 infix
@@ -241,7 +243,7 @@ infix
 	ER9248       4544 - 4545
 	ER9249       4554 - 4555
 	ER9250       4556 - 4557
-using "$raw/FAM1996ER.txt" , clear ;
+using "${raw}/FAM1996ER.txt" , clear ;
 
 label variable  ER7002       "1996 INTERVIEW #" ;
 label variable  ER7005       "# IN FU" ;
@@ -263,9 +265,9 @@ label variable  ER9250       "COMPLETED ED-WF" ;
 
 rename ($vars96) ($varsall) ;
 ren * *_96 ;
-save "$pre\fam1996.dta", replace ;
+save "${pre}/fam1996.dta", replace ;
 
-// Upload Family 1997
+* Upload Family 1997
 
 clear ;
 infix
@@ -285,7 +287,7 @@ infix
 	ER12079      3936 - 3944
 	ER12222      4414 - 4415
 	ER12223      4416 - 4417
-using "$raw/FAM1997ER.txt" , clear ;
+using "${raw}/FAM1997ER.txt" , clear ;
 
 label variable  ER10002      "1997 INTERVIEW #" ;                                                                
 label variable  ER10004      "CURRENT STATE" ;                                   
@@ -306,6 +308,6 @@ label variable  ER12223      "COMPLETED ED-WF" ;
 
 rename ($vars97) ($varsall) ;
 ren * *_97 ;
-save "$pre\fam1997.dta", replace ;
+save "${pre}/fam1997.dta", replace ;
 
 #delimit cr
